@@ -34,5 +34,6 @@ steps:
     action: 'create'
     target: '$(Build.SourceVersion)'
     tagSource: 'gitTag'
+    releaseNotesSource: 'inline'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
