@@ -24,8 +24,10 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
+    msbuildArgs: '--output $(Build.ArtifactStagingDirectory)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    msbuildArchitecture: 'x64'
 
 - task: ArchiveFiles@2
   inputs:
