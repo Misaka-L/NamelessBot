@@ -1,5 +1,5 @@
 # NamelessBot
-基于 [Kaiheila.Net](https://github.com/gehongyan/KaiHeiLa.Net) 构建的 Kook 匿名留言板机器人
+基于 (Kaiheila.Net)[https://github.com/gehongyan/KaiHeiLa.Net] 构建的 Kook 匿名留言板机器人
 ## 如何部署
 1. 前往 (Releases)[https://github.com/Misaka-L/NamelessBot/releases] 下载最新版本的机器人
 2. 编写 `appsettings.json` (见 appsettings.json 格式)
