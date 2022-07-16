@@ -1,11 +1,10 @@
 # NamelessBot
 基于 [Kaiheila.Net](https://github.com/gehongyan/KaiHeiLa.Net) 构建的 Kook 匿名留言板机器人
 ## 如何部署
-1. 拉取 NamelessBot 源代码 (或下载源代码 Zip) 文件
-2. 使用 Visual Studio 等工具进行编译
-3. 编写 `appsettings.json` (见 appsettings.json 格式)
-4. 运行 `NamelessBot.Bot.exe` 或 `dotnet NamelessBot.Bot.dll` (Linux) 运行
-5. 搞定
+1. 前往 (Releases)[https://github.com/Misaka-L/NamelessBot/releases] 下载最新版本的机器人
+2. 编写 `appsettings.json` (见 appsettings.json 格式)
+3. 运行 `NamelessBot.Bot.exe` 或 `dotnet NamelessBot.Bot.dll` (Linux) 运行
+4. 搞定
 ## appsettings.json 格式
 ```json
 {
