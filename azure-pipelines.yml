@@ -38,3 +38,4 @@ steps:
     releaseNotesSource: 'inline'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
+    assets: $(Build.ArtifactStagingDirectory)/*
