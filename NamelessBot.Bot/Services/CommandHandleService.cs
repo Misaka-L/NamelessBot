@@ -1,18 +1,18 @@
-﻿using KaiHeiLa;
-using KaiHeiLa.Commands;
-using KaiHeiLa.WebSocket;
+﻿using Kook;
+using Kook.Commands;
+using Kook.WebSocket;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 
 namespace NamelessBot.Bot.Services {
     public class CommandHandleService : IHostedService {
-        private readonly KaiHeiLaSocketClient _socketClient;
+        private readonly KookSocketClient _socketClient;
         private readonly ILogger<CommandHandleService> _logger;
         private readonly CommandService _commandService;
         private readonly IServiceProvider _serviceProvider;
 
-        public CommandHandleService(ILogger<CommandHandleService> logger, CommandService commandService, KaiHeiLaSocketClient socketClient, IServiceProvider serviceProvider) {
+        public CommandHandleService(ILogger<CommandHandleService> logger, CommandService commandService, KookSocketClient socketClient, IServiceProvider serviceProvider) {
             _logger = logger;
             _commandService = commandService;
             _serviceProvider = serviceProvider;

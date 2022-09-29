@@ -1,5 +1,5 @@
-﻿using KaiHeiLa.Commands;
-using KaiHeiLa.WebSocket;
+﻿using Kook.Commands;
+using Kook.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -25,11 +25,11 @@ namespace NamelessBot.Bot {
         }
 
         private void ConfigureServices(HostBuilderContext context, IServiceCollection services) {
-            services.AddSingleton(new KaiHeiLaSocketClient(new KaiHeiLaSocketConfig {
-                LogLevel = KaiHeiLa.LogSeverity.Verbose
+            services.AddSingleton(new KookSocketClient(new KookSocketConfig {
+                LogLevel = Kook.LogSeverity.Verbose
             }))
                 .AddSingleton(_ => new CommandService(new CommandServiceConfig {
-                    LogLevel = KaiHeiLa.LogSeverity.Verbose
+                    LogLevel = Kook.LogSeverity.Verbose
                 }))
                 .AddHostedService<HostService>()
                 .AddHostedService<CommandHandleService>()

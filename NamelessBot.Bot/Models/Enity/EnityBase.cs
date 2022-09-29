@@ -1,5 +1,5 @@
-﻿using KaiHeiLa;
-using KaiHeiLa.WebSocket;
+﻿using Kook;
+using Kook.WebSocket;
 
 namespace NamelessBot.Bot.Models.Enity {
     public class EnityBase {
@@ -9,8 +9,8 @@ namespace NamelessBot.Bot.Models.Enity {
         public ulong GuildId { get; set; }
         public ulong ChannelId { get; set; }
 
-        public ValueTask<IUser> GetCreatorAsync(KaiHeiLaSocketClient socketClient) => socketClient.GetUserAsync(CreatorId);
-        public ValueTask<IChannel> GetChannelAsync(KaiHeiLaSocketClient socketClient) => socketClient.GetChannelAsync(ChannelId);
-        public SocketGuild GetGuild(KaiHeiLaSocketClient socketClient) => socketClient.GetGuild(GuildId);
+        public ValueTask<IUser> GetCreatorAsync(KookSocketClient socketClient) => socketClient.GetUserAsync(CreatorId);
+        public ValueTask<IChannel> GetChannelAsync(KookSocketClient socketClient) => socketClient.GetChannelAsync(ChannelId);
+        public SocketGuild GetGuild(KookSocketClient socketClient) => socketClient.GetGuild(GuildId);
     }
 }

@@ -1,4 +1,4 @@
-﻿using KaiHeiLa.WebSocket;
+﻿using Kook.WebSocket;
 using NamelessBot.Bot.Models.Enity;
 
 namespace NamelessBot.Bot.Models.Messagebook {

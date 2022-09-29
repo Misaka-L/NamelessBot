@@ -1,4 +1,4 @@
-﻿using KaiHeiLa.WebSocket;
+﻿using Kook.WebSocket;
 using NamelessBot.Bot.Models.Enity;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NamelessBot.Bot.Models.Votes {
     public class VoteUser : EnityBase {
-        public VoteUser(KaiHeiLaSocketClient socketClient) { }
+        public VoteUser(KookSocketClient socketClient) { }
 
         public Guid ItemId;
     }

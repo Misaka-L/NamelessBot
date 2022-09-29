@@ -1,6 +1,6 @@
-﻿using KaiHeiLa;
-using KaiHeiLa.Commands;
-using KaiHeiLa.WebSocket;
+﻿using Kook;
+using Kook.Commands;
+using Kook.WebSocket;
 using NamelessBot.Bot.Services;
 
 namespace NamelessBot.Bot.Modules {

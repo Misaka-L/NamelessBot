@@ -1,13 +1,13 @@
-﻿using KaiHeiLa;
-using KaiHeiLa.WebSocket;
+﻿using Kook;
+using Kook.WebSocket;
 using Microsoft.Extensions.Hosting;
 
 namespace NamelessBot.Bot.Services {
     public class VoteWatchService : BackgroundService {
         private readonly VoteService _voteService;
-        private readonly KaiHeiLaSocketClient _socketClient;
+        private readonly KookSocketClient _socketClient;
 
-        public VoteWatchService(VoteService voteService, KaiHeiLaSocketClient socketClient) {
+        public VoteWatchService(VoteService voteService, KookSocketClient socketClient) {
             _voteService = voteService;
             _socketClient = socketClient;
         }

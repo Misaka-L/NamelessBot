@@ -1,5 +1,5 @@
-﻿using KaiHeiLa;
-using KaiHeiLa.WebSocket;
+﻿using Kook;
+using Kook.WebSocket;
 using Microsoft.Extensions.Logging;
 using NamelessBot.Bot.CardMessages;
 using NamelessBot.Bot.Models.ButtonValue;
@@ -9,13 +9,13 @@ using Newtonsoft.Json;
 namespace NamelessBot.Bot.Services {
     public class MessagebookService {
         private readonly ILogger<MessagebookService> _logger;
-        private readonly KaiHeiLaSocketClient _socketClient;
+        private readonly KookSocketClient _socketClient;
 
         public IReadOnlyCollection<Messagebook> Messagebooks => _messagebooks.AsReadOnly();
         private List<Messagebook> _messagebooks = new List<Messagebook>();
         private Dictionary<ulong, uint[]> _guildManagerRole = new Dictionary<ulong, uint[]>();
 
-        public MessagebookService(ILogger<MessagebookService> logger, KaiHeiLaSocketClient socketClient) {
+        public MessagebookService(ILogger<MessagebookService> logger, KookSocketClient socketClient) {
             _logger = logger;
             _socketClient = socketClient;
 

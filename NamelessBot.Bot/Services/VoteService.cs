@@ -1,5 +1,5 @@
-﻿using KaiHeiLa;
-using KaiHeiLa.WebSocket;
+﻿using Kook;
+using Kook.WebSocket;
 using Microsoft.Extensions.Logging;
 using NamelessBot.Bot.CardMessages;
 using NamelessBot.Bot.Models;
@@ -12,10 +12,10 @@ namespace NamelessBot.Bot.Services {
         public IReadOnlyCollection<Vote> Votes => _votes.AsReadOnly();
         private List<Vote> _votes = new List<Vote>();
 
-        private readonly KaiHeiLaSocketClient _socketClient;
+        private readonly KookSocketClient _socketClient;
         private readonly ILogger<VoteService> _logger;
 
-        public VoteService(KaiHeiLaSocketClient socketCLient, ILogger<VoteService> logger) {
+        public VoteService(KookSocketClient socketCLient, ILogger<VoteService> logger) {
             _socketClient = socketCLient;
             _socketClient.MessageButtonClicked += _socketClient_MessageButtonClicked;
             _logger = logger;
@@ -46,7 +46,7 @@ namespace NamelessBot.Bot.Services {
             }
         }
 
-        private Task _socketClient_MessageButtonClicked(string content, SocketUser user, KaiHeiLa.IMessage sourceMessage, SocketTextChannel channel, SocketGuild guild) {
+        private Task _socketClient_MessageButtonClicked(string content, SocketUser user, Kook.IMessage sourceMessage, SocketTextChannel channel, SocketGuild guild) {
             var action = JsonConvert.DeserializeObject<VoteAction>(content);
             Vote(action.Id, user, action.ItemId, channel);
 

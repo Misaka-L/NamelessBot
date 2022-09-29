@@ -1,9 +1,9 @@
-﻿using KaiHeiLa.WebSocket;
+﻿using Kook.WebSocket;
 using NamelessBot.Bot.Models.Enity;
 
 namespace NamelessBot.Bot.Models.Votes {
     public class VoteItem : EnityBase {
-        public VoteItem(KaiHeiLaSocketClient socketClient) { }
+        public VoteItem(KookSocketClient socketClient) { }
 
         public string Title { get; set; }
         public string Description { get; set; }

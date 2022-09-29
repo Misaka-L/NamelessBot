@@ -1,5 +1,5 @@
-﻿using KaiHeiLa;
-using KaiHeiLa.WebSocket;
+﻿using Kook;
+using Kook.WebSocket;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -9,14 +9,14 @@ namespace NamelessBot.Bot.Services {
     public class HostService : IHostedService {
         private readonly IOptions<KookSetting> _options;
         private readonly ILogger<HostService> _logger;
-        private readonly ILogger<KaiHeiLaSocketClient> _socketClientLogger;
+        private readonly ILogger<KookSocketClient> _socketClientLogger;
         private readonly IHostApplicationLifetime _appLifetime;
-        private readonly KaiHeiLaSocketClient _socketClient;
+        private readonly KookSocketClient _socketClient;
 
         public HostService(ILogger<HostService> logger,
-            ILogger<KaiHeiLaSocketClient> socketClientLogger,
+            ILogger<KookSocketClient> socketClientLogger,
             IHostApplicationLifetime appLifetime,
-            KaiHeiLaSocketClient socketClient,
+            KookSocketClient socketClient,
             IOptions<KookSetting> options) {
             _logger = logger;
             _appLifetime = appLifetime;
