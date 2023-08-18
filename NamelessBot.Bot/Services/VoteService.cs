@@ -46,9 +46,9 @@ namespace NamelessBot.Bot.Services {
             }
         }
 
-        private Task _socketClient_MessageButtonClicked(string content, SocketUser user, Kook.IMessage sourceMessage, SocketTextChannel channel, SocketGuild guild) {
+        private Task _socketClient_MessageButtonClicked(string content, Cacheable<SocketGuildUser, ulong> user, Cacheable<IMessage, Guid> arg3, SocketTextChannel channel) {
             var action = JsonConvert.DeserializeObject<VoteAction>(content);
-            Vote(action.Id, user, action.ItemId, channel);
+            Vote(action.Id, user.Value, action.ItemId, channel);
 
             return Task.CompletedTask;
         }
@@ -57,9 +57,9 @@ namespace NamelessBot.Bot.Services {
             var vote = new Vote(_socketClient) { Title = title, Items = items, ChannelId = channelId, EndTime = endTime };
 
             var channel = await _socketClient.GetChannelAsync(channelId) as SocketTextChannel;
-            var result = await channel.SendCardMessageAsync(new VoteCard(vote).Build());
+            var result = await channel.SendCardsAsync(new VoteCard(vote).Build());
 
-            vote.MessageId = result.MessageId;
+            vote.MessageId = result.Id;
             _votes.Add(vote);
             SaveConfig();
         }
@@ -71,14 +71,14 @@ namespace NamelessBot.Bot.Services {
                     var selectedItem = vote.Items.First(item => item.Id == vote.Users.Find(u => u.CreatorId == user.Id).ItemId);
                     _logger.LogInformation("{0}({1}) 给 {2}({3}) 的选项 {4}({5}) 尝试投票，但是忘记了他投过 {6}({7}) 了", $"{user.Username}#{user.IdentifyNumber}", user.Id, vote.Title, Id, item.Title, item.Id, selectedItem.Title, selectedItem.Id);
 
-                    await channel.SendKMarkdownMessageAsync($"你已经投过 {selectedItem.Title} 了", ephemeralUser: user);
+                    await channel.SendTextAsync($"你已经投过 {selectedItem.Title} 了", ephemeralUser: user);
                 } else {
                     vote.Users.Add(new VoteUser(_socketClient) { CreatorId = user.Id, ItemId = itemId });
                     var item = vote.Items.First(item => item.Id == itemId);
                     item.Count++;
                     SaveConfig();
 
-                    await channel.SendKMarkdownMessageAsync($"你给 {item.Title} 投了一票", ephemeralUser: user);
+                    await channel.SendTextAsync($"你给 {item.Title} 投了一票", ephemeralUser: user);
                     _logger.LogInformation("{0}({1}) 给 {2}({3}) 的选项 {4}({5}) 投了一票，现在票数: {6}", $"{user.Username}#{user.IdentifyNumber}", user.Id, vote.Title, Id, item.Title, item.Id, item.Count);
                 }
             } else {
@@ -103,7 +103,7 @@ namespace NamelessBot.Bot.Services {
 
         public async Task ShowResult(Guid Id, ulong channelId) {
             if (_votes.Find(v => v.Id == Id) is Vote vote) {
-                await (await _socketClient.GetChannelAsync(channelId) as SocketTextChannel).SendCardMessageAsync(new VoteResultCard(vote).Build());
+                await (await _socketClient.GetChannelAsync(channelId) as SocketTextChannel).SendCardsAsync(new VoteResultCard(vote).Build());
             }
         }
     }

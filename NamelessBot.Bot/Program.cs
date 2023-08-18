@@ -26,10 +26,9 @@ namespace NamelessBot.Bot {
 
         private void ConfigureServices(HostBuilderContext context, IServiceCollection services) {
             services.AddSingleton(new KookSocketClient(new KookSocketConfig {
-                LogLevel = Kook.LogSeverity.Verbose
+                ConnectionTimeout = 60000
             }))
                 .AddSingleton(_ => new CommandService(new CommandServiceConfig {
-                    LogLevel = Kook.LogSeverity.Verbose
                 }))
                 .AddHostedService<HostService>()
                 .AddHostedService<CommandHandleService>()

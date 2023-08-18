@@ -27,7 +27,7 @@ namespace NamelessBot.Bot.Services {
             await _commandService.AddModulesAsync(Assembly.GetEntryAssembly(), _serviceProvider);
         }
 
-        private async Task _socketClient_MessageReceived(SocketMessage arg) {
+        private async Task _socketClient_MessageReceived(SocketMessage arg, SocketUser socketUser, IMessageChannel socketDmChannel) {
             if (arg is SocketUserMessage message && message.Type == MessageType.KMarkdown) {
                 int argPos = 0;
 

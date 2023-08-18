@@ -9,8 +9,8 @@ namespace NamelessBot.Bot.Models.Enity {
         public ulong GuildId { get; set; }
         public ulong ChannelId { get; set; }
 
-        public ValueTask<IUser> GetCreatorAsync(KookSocketClient socketClient) => socketClient.GetUserAsync(CreatorId);
-        public ValueTask<IChannel> GetChannelAsync(KookSocketClient socketClient) => socketClient.GetChannelAsync(ChannelId);
+        public Task<IUser> GetCreatorAsync(KookSocketClient socketClient) => socketClient.GetUserAsync(CreatorId);
+        public Task<IChannel> GetChannelAsync(KookSocketClient socketClient) => socketClient.GetChannelAsync(ChannelId);
         public SocketGuild GetGuild(KookSocketClient socketClient) => socketClient.GetGuild(GuildId);
     }
 }

@@ -18,7 +18,7 @@ namespace NamelessBot.Bot.Modules {
         [RequireUserPermission(GuildPermission.ManageGuild)]
         public async Task SetManager(IRole role) {
             _messagebookService.AddManagerRole(Context.Guild.Id, role.Id);
-            await ReplyKMarkdownAsync($"已设置 (rol){role.Id}(rol) 为管理角色组");
+            await ReplyTextAsync($"已设置 (rol){role.Id}(rol) 为管理角色组");
         }
 
         [Summary("移除管理员角色组")]
@@ -26,7 +26,7 @@ namespace NamelessBot.Bot.Modules {
         [RequireUserPermission(GuildPermission.ManageGuild)]
         public async Task RemoveManager(IRole role) {
             _messagebookService.RemoveManagerRole(Context.Guild.Id, role.Id);
-            await ReplyKMarkdownAsync($"已移除 (rol){role.Id}(rol) 的管理权限");
+            await ReplyTextAsync($"已移除 (rol){role.Id}(rol) 的管理权限");
         }
 
         [Summary("创建一个留言板")]
@@ -44,9 +44,9 @@ namespace NamelessBot.Bot.Modules {
         public async Task CreateMessage(string id, [Remainder] string message) {
             try {
                 await _messagebookService.CreateMessage(Guid.Parse(id), message, Context.User);
-                await ReplyKMarkdownAsync($"留言成功，请等待管理员审核");
+                await ReplyTextAsync($"留言成功，请等待管理员审核");
             } catch (Exception ex) {
-                await ReplyKMarkdownAsync($"留言失败: {ex.Message}");
+                await ReplyTextAsync($"留言失败: {ex.Message}");
             }
         }
 
